@@ -1,5 +1,68 @@
 [
     {
+        "name": "通义千问",
+        "url": "https://tongyi.aliyun.com/qianwen/",
+        "description": "由阿里云开发的人工智能助手",
+        "tags": [
+            "AI对话",
+            "语言模型",
+            "智能助手"
+        ]
+    },
+    {
+        "name": "deepseek",
+        "url": "https://chat.deepseek.com/",
+        "description": "深度求索人工智能基础技术研究有限公司(简称“深度求索”或“DeepSeek”)，成立于2023年，是一家专注于实现AGI的中国公司。",
+        "tags": [
+            "AI对话",
+            "语言模型",
+            "智能助手"
+        ]
+    },
+    {
+        "name": "文心一言",
+        "url": "https://yiyan.baidu.com/",
+        "description": "百度公司推出的一个AI预训练模型，它主要用于自然语言处理任务，如文本生成、问答系统等",
+        "tags": [
+            "AI对话",
+            "语言模型",
+            "智能助手",
+            "图像生成"
+        ]
+    },    
+    {
+        "name": "豆包",
+        "url": "https://www.doubao.com/chat/",
+        "description": "豆包，一个能解答各种知识疑问，进行文案创作、文本润色，还能处理数理逻辑等问题",
+        "tags": [
+            "AI对话",
+            "语言模型",
+            "智能助手",
+            "图像生成"
+        ]
+    },    
+    {
+        "name": "kimi",
+        "url": "https://kimi.moonshot.cn/",
+        "description": "Kimi是由北京月之暗面科技有限公司（Moonshot AI）开发的一款智能助手",
+        "tags": [
+            "AI对话",
+            "语言模型",
+            "智能助手"
+        ]
+    },
+    {
+        "name": "文心一言",
+        "url": "https://yiyan.baidu.com/",
+        "description": "百度公司推出的一个AI预训练模型，它主要用于自然语言处理任务，如文本生成、问答系统等",
+        "tags": [
+            "AI对话",
+            "语言模型",
+            "智能助手",
+            "图像生成"
+        ]
+    },
+    {
         "name": "ChatGPT",
         "url": "https://chat.openai.com",
         "description": "OpenAI开发的最强大AI聊天机器人，支持自然语言对话和各类任务",
