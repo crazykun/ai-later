@@ -1,0 +1,82 @@
+[
+    {
+        "name": "ChatGPT",
+        "url": "https://chat.openai.com",
+        "description": "OpenAI开发的最强大AI聊天机器人，支持自然语言对话和各类任务",
+        "tags": [
+            "AI对话",
+            "语言模型",
+            "智能助手"
+        ]
+    },
+    {
+        "name": "Claude",
+        "url": "https://anthropic.com",
+        "description": "Anthropic开发的AI助手，擅长分析和写作，对话更加自然",
+        "tags": [
+            "AI对话",
+            "语言模型",
+            "智能助手"
+        ]
+    },
+    {
+        "name": "Midjourney",
+        "url": "https://www.midjourney.com/app",
+        "description": "通过Discord使用的AI绘画工具，生成的图片艺术感强，操作简单",
+        "tags": [
+            "AI绘画",
+            "图像生成",
+            "艺术创作"
+        ]
+    },
+    {
+        "name": "DALL-E",
+        "url": "https://labs.openai.com",
+        "description": "OpenAI开发的AI绘画工具，支持文生图和图片编辑功能",
+        "tags": [
+            "AI绘画",
+            "图像生成",
+            "图像编辑"
+        ]
+    },
+    {
+        "name": "Stable Diffusion",
+        "url": "https://stability.ai",
+        "description": "开源的AI绘画工具，支持本地部署，功能强大，可自定义配置",
+        "tags": [
+            "AI绘画",
+            "图像生成",
+            "开源"
+        ]
+    },
+    {
+        "name": "Runway",
+        "url": "https://runway.com",
+        "description": "强大的AI视频内容生成和编辑工具，支持多种视频处理功能",
+        "tags": [
+            "AI视频",
+            "视频编辑",
+            "内容创作"
+        ]
+    },
+    {
+        "name": "D-ID",
+        "url": "https://d-id.com",
+        "description": "专业的AI数字人视频生成平台，可创建逼真的数字人视频",
+        "tags": [
+            "AI视频",
+            "数字人",
+            "视频生成"
+        ]
+    },
+    {
+        "name": "Mubert",
+        "url": "https://mubert.com",
+        "description": "AI音乐生成平台，支持创作配乐、音乐流媒体和API接入",
+        "tags": [
+            "AI音频",
+            "音乐生成",
+            "配乐制作"
+        ]
+    }
+]

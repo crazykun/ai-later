@@ -1,0 +1,45 @@
+<!-- templates/index.html -->
+{{ template "layout.html" . }}
+
+{{ define "content" }}
+<div class="container mx-auto px-4 py-8">
+    <!-- Search Section -->
+    <div class="mb-8">
+        <form action="/search" method="GET" class="flex flex-wrap gap-4">
+            <input type="text" name="q" value="{{ .query }}" 
+                   class="flex-grow p-2 border rounded-lg" 
+                   placeholder="Search AI tools...">
+            <select name="category" class="p-2 border rounded-lg">
+                <option value="">全部</option>
+                {{ range $category, $_ := .categories }}
+                <option value="{{ $category }}" {{ if eq $.selectedCategory $category }}selected{{ end }}>
+                    {{ $category }}
+                </option>
+                {{ end }}
+            </select>
+            <button type="submit" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600">
+                搜索
+            </button>
+        </form>
+    </div>
+
+    <!-- Sites Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {{ range .sites }}
+        <div class="border rounded-lg p-6 hover:shadow-lg transition-shadow">
+            <h2 class="text-xl font-bold mb-2">{{ .Name }}</h2>
+            <p class="text-gray-600 mb-4">{{ .Description }}</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+                {{ range .Tags }}
+                <span class="bg-gray-100 px-3 py-1 rounded-full text-sm">{{ . }}</span>
+                {{ end }}
+            </div>
+            <a href="{{ .URL }}" target="_blank" 
+               class="inline-block bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600">
+                Visit Site
+            </a>
+        </div>
+        {{ end }}
+    </div>
+</div>
+{{ end }}
