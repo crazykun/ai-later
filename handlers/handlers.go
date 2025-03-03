@@ -2,6 +2,7 @@
 package handlers
 
 import (
+	"ai-navigator/global"
 	"ai-navigator/models"
 	"encoding/json"
 	"net/http"
@@ -37,6 +38,7 @@ func HomeHandler(c *gin.Context) {
 	c.HTML(http.StatusOK, "index.html", gin.H{
 		"sites":      sites,
 		"categories": categories,
+		"Copyright":  global.ConfigData.Copyright,
 	})
 }
 
