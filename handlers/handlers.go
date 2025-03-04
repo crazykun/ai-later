@@ -4,28 +4,80 @@ package handlers
 import (
 	"ai-navigator/models"
 	"encoding/json"
+	"log"
 	"net/http"
 	"os"
 	"strings"
 
+	"sync"
+
+	"github.com/fsnotify/fsnotify"
 	"github.com/gin-gonic/gin"
 )
 
-var sites []models.Site
+var (
+	sites     []models.Site
+	sitesLock sync.RWMutex
+)
 
 func init() {
-	// Read and parse JSON file
+	loadSites()
+	go watchFileChanges()
+}
+
+func loadSites() {
 	data, err := os.ReadFile("./data/ai.json")
 	if err != nil {
-		panic(err)
+		log.Printf("读取文件失败: %v", err)
+		return
 	}
 
-	if err := json.Unmarshal(data, &sites); err != nil {
-		panic(err)
+	var newSites []models.Site
+	if err := json.Unmarshal(data, &newSites); err != nil {
+		log.Printf("解析JSON失败: %v", err)
+		return
+	}
+
+	sitesLock.Lock()
+	defer sitesLock.Unlock()
+	sites = newSites
+}
+
+func watchFileChanges() {
+	watcher, err := fsnotify.NewWatcher()
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer watcher.Close()
+
+	err = watcher.Add("./data/ai.json")
+	if err != nil {
+		log.Printf("监控文件失败: %v", err)
+		return
+	}
+
+	for {
+		select {
+		case event, ok := <-watcher.Events:
+			if !ok {
+				return
+			}
+			if event.Has(fsnotify.Write) {
+				log.Println("检测到文件变更，重新加载数据")
+				loadSites()
+			}
+		case err, ok := <-watcher.Errors:
+			if !ok {
+				return
+			}
+			log.Printf("监控错误: %v", err)
+		}
 	}
 }
 
 func HomeHandler(c *gin.Context) {
+	sitesLock.RLock()
+	defer sitesLock.RUnlock()
 	// Get unique categories
 	categories := make(map[string]bool)
 	for _, site := range sites {
@@ -44,6 +96,8 @@ func HomeHandler(c *gin.Context) {
 }
 
 func SearchHandler(c *gin.Context) {
+	sitesLock.RLock()
+	defer sitesLock.RUnlock()
 	query := strings.ToLower(c.Query("q"))
 	category := c.Query("category")
 
