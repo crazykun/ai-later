@@ -26,16 +26,21 @@
     <!-- Sites Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {{ range .sites }}
-        <div class="border rounded-lg p-6 hover:shadow-lg transition-shadow">
-            <h2 class="text-xl font-bold mb-2">{{ .Name }}</h2>
-            <p class="text-gray-600 mb-4">{{ .Description }}</p>
-            <div class="flex flex-wrap gap-2 mb-4">
+        <div class="border rounded-lg p-6 hover:shadow-lg transition-shadow flex flex-col min-h-64">
+            <div class="flex flex-row items-start gap-4">
+                <img src="{{ .Logo }}" alt="{{ .Name }} logo" class="w-24 h-24 object-contain rounded-lg">
+                <div class="flex-1">
+                    <h2 class="text-xl font-bold mb-2">{{ .Name }}</h2>
+                    <p class="text-gray-600 mb-4 flex-grow">{{ .Description }}</p>
+                </div>
+            </div>
+            <div class="flex flex-wrap gap-2 mt-2 mb-4">
                 {{ range .Tags }}
                 <span class="bg-gray-100 px-3 py-1 rounded-full text-sm">{{ . }}</span>
                 {{ end }}
             </div>
             <a href="{{ .URL }}" target="_blank" 
-               class="inline-block bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600">
+               class="self-start bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 mt-auto">
                 Visit Site
             </a>
         </div>
