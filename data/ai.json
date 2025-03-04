@@ -79,6 +79,17 @@
         ]
     },
     {
+        "name": "小艺",
+        "url": "https://xiaoyi.huawei.com/chat/",
+        "description": "由华为公司开发的AI智能助手，支持多种语言和场景",
+        "logo": "/static/img/nav-ai-xiaoyi.png",
+        "tags": [
+            "AI对话",
+            "语言模型",
+            "智能助手"
+        ]
+    },
+    {
         "name": "Midjourney",
         "url": "https://www.midjourney.com/app",
         "description": "通过Discord使用的AI绘画工具，生成的图片艺术感强，操作简单",
