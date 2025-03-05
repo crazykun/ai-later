@@ -182,5 +182,14 @@
         "tags": [
             "IDE"
         ]
+    },
+    {
+        "name": "ima",
+        "url": "https://ima.qq.com/",
+        "description": "会思考的知识库，开启读写搜新体验。",
+        "logo": "/static/img/nav-ai-ima.png",
+        "tags": [
+            "知识库"
+        ]
     }
 ]
