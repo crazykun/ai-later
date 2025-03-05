@@ -18,7 +18,8 @@
         "tags": [
             "AI对话",
             "语言模型",
-            "智能助手"
+            "智能助手",
+            "开源"
         ]
     },
     {
@@ -63,9 +64,7 @@
         "logo": "/static/img/nav-ai-ChatGPT.png",
         "tags": [
             "AI对话",
-            "语言模型",
-            "智能助手"
-        ]
+            "语言模型"        ]
     },
     {
         "name": "Claude",
@@ -86,6 +85,17 @@
         "tags": [
             "AI对话",
             "语言模型",
+            "智能助手"
+        ]
+    },
+    {
+        "name": "腾讯元宝",
+        "url": "https://yuanbao.tencent.com/",
+        "description": "腾讯元宝，一款人工智能助手，专注于提供问答服务、解决问题、建议和信息检索，致力于帮助用户高效获取所需内容。",
+        "logo": "/static/img/nav-ai-yuanbao.png",
+        "tags": [
+            "AI对话",
+            "图像生成",
             "智能助手"
         ]
     },
