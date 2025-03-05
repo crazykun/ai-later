@@ -75,58 +75,35 @@ func watchFileChanges() {
 	}
 }
 
-func HomeHandler(c *gin.Context) {
-	sitesLock.RLock()
-	defer sitesLock.RUnlock()
-	// Get unique categories
+func getUniqueCategories(sites []models.Site) map[string]bool {
 	categories := make(map[string]bool)
 	for _, site := range sites {
 		for _, tag := range site.Tags {
 			categories[tag] = true
 		}
 	}
-
-	copyright, _ := c.Get("Copyright")
-
-	c.HTML(http.StatusOK, "index.html", gin.H{
-		"sites":      sites,
-		"categories": categories,
-		"Copyright":  copyright,
-	})
+	return categories
 }
 
-func SearchHandler(c *gin.Context) {
-	sitesLock.RLock()
-	defer sitesLock.RUnlock()
-	query := strings.ToLower(c.Query("q"))
-	category := c.Query("category")
-
-	var filteredSites []models.Site
+func filterSites(sites []models.Site, query string, category string) []models.Site {
+	var filtered []models.Site
+	query = strings.ToLower(query)
 
 	for _, site := range sites {
-		// Filter by category if specified
 		if category != "" && !contains(site.Tags, category) {
 			continue
 		}
 
-		// Filter by search query
 		if query != "" {
 			if strings.Contains(strings.ToLower(site.Name), query) ||
 				strings.Contains(strings.ToLower(site.Description), query) {
-				filteredSites = append(filteredSites, site)
+				filtered = append(filtered, site)
 			}
 			continue
 		}
-
-		filteredSites = append(filteredSites, site)
+		filtered = append(filtered, site)
 	}
-
-	c.HTML(http.StatusOK, "index.html", gin.H{
-		"sites":            filteredSites,
-		"categories":       getCategories(),
-		"query":            query,
-		"selectedCategory": category,
-	})
+	return filtered
 }
 
 func contains(slice []string, item string) bool {
@@ -138,12 +115,40 @@ func contains(slice []string, item string) bool {
 	return false
 }
 
-func getCategories() map[string]bool {
-	categories := make(map[string]bool)
-	for _, site := range sites {
-		for _, tag := range site.Tags {
-			categories[tag] = true
-		}
+func HomeHandler(c *gin.Context) {
+	sitesLock.RLock()
+	defer sitesLock.RUnlock()
+
+	if len(sites) == 0 {
+		c.HTML(http.StatusInternalServerError, "error.html", gin.H{
+			"error": "无法加载站点数据",
+		})
+		log.Printf("警告: 站点数据为空")
+		return
 	}
-	return categories
+
+	copyright, _ := c.Get("Copyright")
+
+	c.HTML(http.StatusOK, "index.html", gin.H{
+		"sites":      sites,
+		"categories": getUniqueCategories(sites),
+		"Copyright":  copyright,
+	})
+}
+
+func SearchHandler(c *gin.Context) {
+	sitesLock.RLock()
+	defer sitesLock.RUnlock()
+
+	query := c.Query("q")
+	category := c.Query("category")
+
+	filtered := filterSites(sites, query, category)
+
+	c.HTML(http.StatusOK, "index.html", gin.H{
+		"sites":            filtered,
+		"categories":       getUniqueCategories(sites),
+		"query":            query,
+		"selectedCategory": category,
+	})
 }
