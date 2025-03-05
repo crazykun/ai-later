@@ -154,5 +154,23 @@
             "音乐生成",
             "配乐制作"
         ]
+    },
+    {
+        "nanme": "cursor",
+        "url": "https://www.cursor.com/",
+        "description": "Cursor 是使用 AI 编写代码的最佳方式。",
+        "logo": "/static/img/nav-ai-cursor.png",
+        "tags": [
+            "IDE"
+        ]
+    },
+    {
+        "name": "Trae",
+        "url": "https://www.trae.com.cn/",
+        "description": "国内首款 AI 原生 IDE，专为中国开发者打造，让 AI 深度融入编程，带来比插件更流畅、精准的开发体验。",
+        "logo": "/static/img/nav-ai-trae.png",
+        "tags": [
+            "IDE"
+        ]
     }
 ]
