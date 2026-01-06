@@ -3,48 +3,72 @@
 
 {{ define "content" }}
 <div class="container mx-auto px-4 py-8">
-    <!-- Search Section -->
-    <div class="mb-8">
-        <form action="/search" method="GET" class="flex flex-wrap gap-4">
-            <input type="text" name="q" value="{{ .query }}" 
-                   class="flex-grow p-2 border rounded-lg" 
-                   placeholder="Search AI tools...">
-            <select name="category" class="p-2 border rounded-lg">
-                <option value="">全部</option>
-                {{ range $category, $_ := .categories }}
-                <option value="{{ $category }}" {{ if eq $.selectedCategory $category }}selected{{ end }}>
-                    {{ $category }}
-                </option>
-                {{ end }}
-            </select>
-            <button type="submit" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600">
-                搜索
-            </button>
-        </form>
+    <!-- Hero Section -->
+    <div class="mb-12 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">AI工具导航</h1>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            发现和使用最优质的人工智能工具，提升工作效率和创造力
+        </p>
+    </div>
+
+
+
+    <!-- Category Tags -->
+    <div class="mb-12">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">分类浏览</h2>
+        <div class="flex flex-wrap gap-3">
+            <a href="/" class="px-5 py-2 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors text-gray-800 font-medium">
+                全部
+            </a>
+            {{ range $category, $_ := .categories }}
+            <a href="/search?category={{ $category }}" class="px-5 py-2 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors text-gray-800 font-medium">
+                {{ $category }}
+            </a>
+            {{ end }}
+        </div>
     </div>
 
     <!-- Sites Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {{ range .sites }}
-        <div class="border rounded-lg p-6 hover:shadow-lg transition-shadow flex flex-col min-h-64">
-            <div class="flex flex-row items-start gap-4">
-                <img src="{{ .Logo }}" alt="{{ .Name }} logo" class="w-20 h-20 object-contain rounded-lg">
+        <div class="border border-gray-200 rounded-xl p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 bg-white flex flex-col min-h-72">
+            <div class="flex flex-row items-start gap-4 mb-4">
+                <img src="{{ .Logo }}" alt="{{ .Name }} logo" class="w-16 h-16 object-contain rounded-lg border border-gray-100">
                 <div class="flex-1">
-                    <h2 class="text-xl font-bold mb-2">{{ .Name }}</h2>
-                    <p class="text-gray-600 mb-4 flex-grow">{{ .Description }}</p>
+                    <h2 class="text-xl font-bold text-gray-900 mb-2">{{ .Name }}</h2>
+                    <p class="text-gray-600 mb-4 line-clamp-3 flex-grow">{{ .Description }}</p>
                 </div>
             </div>
             <div class="flex flex-wrap gap-2 mt-2 mb-4">
                 {{ range .Tags }}
-                <span class="bg-gray-100 px-3 py-1 rounded-full text-sm">{{ . }}</span>
+                <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm font-medium">
+                    {{ . }}
+                </span>
                 {{ end }}
             </div>
-            <a href="{{ .URL }}" target="_blank" 
-               class="self-start bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 mt-auto">
-                Visit Site
+            <a href="{{ .URL }}" target="_blank" rel="noopener noreferrer"
+               class="self-start bg-green-500 text-white px-5 py-2.5 rounded-lg hover:bg-green-600 transition-all transform hover:scale-105 mt-auto flex items-center gap-2">
+                <span>访问站点</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                </svg>
             </a>
         </div>
         {{ end }}
     </div>
+
+    <!-- Pagination or Empty State -->
+    {{ if not .sites }}
+    <div class="text-center py-16 bg-gray-50 rounded-xl mt-8">
+        <svg class="w-16 h-16 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        <h3 class="text-xl font-bold text-gray-800 mb-2">没有找到匹配的结果</h3>
+        <p class="text-gray-600 mb-6">请尝试使用其他搜索词或分类</p>
+        <a href="/" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors">
+            返回首页
+        </a>
+    </div>
+    {{ end }}
 </div>
 {{ end }}

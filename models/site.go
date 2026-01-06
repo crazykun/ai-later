@@ -11,4 +11,9 @@ type Site struct {
 	Description string   `json:"description"`
 	Logo        string   `json:"logo"`
 	Tags        []string `json:"tags"`
+	Category    string   `json:"category,omitempty"`
+	Rating      float64  `json:"rating,omitempty"`
+	Visits      int      `json:"visits,omitempty"`
+	Featured    bool     `json:"featured,omitempty"`
+	CreatedAt   string   `json:"created_at,omitempty"`
 }

@@ -1,33 +1,78 @@
 <!-- templates/layout.html -->
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Later</title>
-    <meta name="keywords" content="AI Later AI导航站"/>
-    <meta name="description" content="AI Later 是一个致力于提供 AI 工具的网站，帮助你快速找到适合自己的 AI 工具。"/>
+    <title>AI工具导航</title>
+    <meta name="keywords" content="AI导航站, AI工具, 人工智能工具"/>
+    <meta name="description" content="AI工具导航是一个致力于提供优质AI工具的网站，帮助你快速找到适合自己的AI工具。"/>
     <link rel="icon" href="/static/img/ico.png" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .line-clamp-3 {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+    </style>
 </head>
-<body class="bg-gray-50">
-    <header class="shadow-sm mb-8">
-        <div class="container mx-auto text-center">
-            <h1 class="text-3xl font-bold">
-                <a href="/" class="text-blue-600 hover:text-blue-800 inline-block">
-                    <img src="./static/img/logo.png" alt="" class="mx-auto h-48">
-                </a>
-            </h1>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="/" class="flex items-center gap-3">
+                <img src="/static/img/logo.png" alt="AI导航" class="w-12 h-12">
+                <span class="text-2xl font-bold text-gray-900">AI工具导航</span>
+            </a>
+            <nav class="hidden md:flex items-center gap-6">
+                <a href="/" class="text-gray-700 hover:text-blue-500 font-medium transition-colors">首页</a>
+            </nav>
+            <button class="md:hidden text-gray-700">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
         </div>
     </header>
 
     {{ template "content" . }}
 
-    <footer class="bg-white mt-12 py-6">
-        <div class="container mx-auto px-4 text-center text-gray-600">
-            <p>&copy; 2025 AI Later. All rights reserved.</p>
-            <p> <div class="copyright">备案号：<a href="http://beian.miit.gov.cn">{{ .Copyright }}</a></div></p>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 mt-20">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">AI工具导航</h3>
+                    <p class="text-gray-400">
+                        发现和使用最优质的人工智能工具，提升工作效率和创造力。
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">快速链接</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/" class="text-gray-400 hover:text-white transition-colors">首页</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">联系我们</h3>
+                    <p class="text-gray-400">
+                        如有任何问题或建议，欢迎联系我们。
+                    </p>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 AI工具导航. All rights reserved.</p>
+                <p class="mt-2">备案号：<a href="http://beian.miit.gov.cn" class="text-gray-400 hover:text-white">{{ .Copyright }}</a></p>
+            </div>
         </div>
     </footer>
 

@@ -8,7 +8,10 @@
             "AI对话",
             "语言模型",
             "智能助手"
-        ]
+        ],
+        "category": "AI对话",
+        "rating": 4.5,
+        "featured": true
     },
     {
         "name": "deepseek",
@@ -20,7 +23,9 @@
             "语言模型",
             "智能助手",
             "开源"
-        ]
+        ],
+        "category": "AI对话",
+        "rating": 4.3
     },
     {
         "name": "文心一言",
@@ -32,7 +37,10 @@
             "语言模型",
             "智能助手",
             "图像生成"
-        ]
+        ],
+        "category": "AI对话",
+        "rating": 4.4,
+        "featured": true
     },
     {
         "name": "豆包",
@@ -44,7 +52,9 @@
             "语言模型",
             "智能助手",
             "图像生成"
-        ]
+        ],
+        "category": "AI对话",
+        "rating": 4.2
     },
     {
         "name": "kimi",
@@ -55,7 +65,10 @@
             "AI对话",
             "语言模型",
             "智能助手"
-        ]
+        ],
+        "category": "AI对话",
+        "rating": 4.3,
+        "featured": true
     },
     {
         "name": "ChatGPT",
@@ -64,7 +77,11 @@
         "logo": "/static/img/nav-ai-ChatGPT.png",
         "tags": [
             "AI对话",
-            "语言模型"        ]
+            "语言模型"
+        ],
+        "category": "AI对话",
+        "rating": 4.8,
+        "featured": true
     },
     {
         "name": "Claude",
@@ -75,7 +92,9 @@
             "AI对话",
             "语言模型",
             "智能助手"
-        ]
+        ],
+        "category": "AI对话",
+        "rating": 4.6
     },
     {
         "name": "小艺",
@@ -86,7 +105,9 @@
             "AI对话",
             "语言模型",
             "智能助手"
-        ]
+        ],
+        "category": "AI对话",
+        "rating": 4.1
     },
     {
         "name": "腾讯元宝",
@@ -97,7 +118,9 @@
             "AI对话",
             "图像生成",
             "智能助手"
-        ]
+        ],
+        "category": "AI对话",
+        "rating": 4.0
     },
     {
         "name": "Midjourney",
@@ -108,7 +131,10 @@
             "AI绘画",
             "图像生成",
             "艺术创作"
-        ]
+        ],
+        "category": "AI绘画",
+        "rating": 4.7,
+        "featured": true
     },
     {
         "name": "DALL-E",
@@ -119,7 +145,9 @@
             "AI绘画",
             "图像生成",
             "图像编辑"
-        ]
+        ],
+        "category": "AI绘画",
+        "rating": 4.6
     },
     {
         "name": "Stable Diffusion",
@@ -130,7 +158,9 @@
             "AI绘画",
             "图像生成",
             "开源"
-        ]
+        ],
+        "category": "AI绘画",
+        "rating": 4.5
     },
     {
         "name": "Runway",
@@ -141,7 +171,9 @@
             "AI视频",
             "视频编辑",
             "内容创作"
-        ]
+        ],
+        "category": "AI视频",
+        "rating": 4.4
     },
     {
         "name": "D-ID",
@@ -152,7 +184,9 @@
             "AI视频",
             "数字人",
             "视频生成"
-        ]
+        ],
+        "category": "AI视频",
+        "rating": 4.3
     },
     {
         "name": "Mubert",
@@ -163,16 +197,22 @@
             "AI音频",
             "音乐生成",
             "配乐制作"
-        ]
+        ],
+        "category": "AI音频",
+        "rating": 4.2
     },
     {
-        "nanme": "cursor",
+        "name": "cursor",
         "url": "https://www.cursor.com/",
         "description": "Cursor 是使用 AI 编写代码的最佳方式。",
         "logo": "/static/img/nav-ai-cursor.png",
         "tags": [
-            "IDE"
-        ]
+            "IDE",
+            "代码助手",
+            "AI编程"
+        ],
+        "category": "AI编程",
+        "rating": 4.4
     },
     {
         "name": "Trae",
@@ -180,8 +220,12 @@
         "description": "国内首款 AI 原生 IDE，专为中国开发者打造，让 AI 深度融入编程，带来比插件更流畅、精准的开发体验。",
         "logo": "/static/img/nav-ai-trae.png",
         "tags": [
-            "IDE"
-        ]
+            "IDE",
+            "代码助手",
+            "AI编程"
+        ],
+        "category": "AI编程",
+        "rating": 4.3
     },
     {
         "name": "ima",
@@ -189,7 +233,142 @@
         "description": "会思考的知识库，开启读写搜新体验。",
         "logo": "/static/img/nav-ai-ima.png",
         "tags": [
-            "知识库"
-        ]
+            "知识库",
+            "文档助手",
+            "信息管理"
+        ],
+        "category": "AI工具",
+        "rating": 4.0
+    },
+    {
+        "name": "GitHub Copilot",
+        "url": "https://github.com/features/copilot",
+        "description": "由GitHub和OpenAI合作开发的AI代码助手，实时提供代码建议和自动完成",
+        "logo": "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
+        "tags": [
+            "代码助手",
+            "AI编程",
+            "开发工具"
+        ],
+        "category": "AI编程",
+        "rating": 4.6,
+        "featured": true
+    },
+    {
+        "name": "Perplexity AI",
+        "url": "https://www.perplexity.ai",
+        "description": "智能搜索引擎，结合AI技术提供更准确、更详细的搜索结果",
+        "logo": "https://www.perplexity.ai/favicon.ico",
+        "tags": [
+            "搜索引擎",
+            "AI助手",
+            "信息检索"
+        ],
+        "category": "AI工具",
+        "rating": 4.5
+    },
+    {
+        "name": "Notion AI",
+        "url": "https://www.notion.so/ai",
+        "description": "集成在Notion中的AI助手，帮助用户撰写、编辑和组织文档内容",
+        "logo": "https://www.notion.so/favicon.ico",
+        "tags": [
+            "文档助手",
+            "AI写作",
+            " productivity"
+        ],
+        "category": "AI工具",
+        "rating": 4.4
+    },
+    {
+        "name": "Canva AI",
+        "url": "https://www.canva.com/ai/",
+        "description": "Canva的AI设计工具，帮助用户快速创建专业的设计作品",
+        "logo": "https://www.canva.com/favicon.ico",
+        "tags": [
+            "设计工具",
+            "AI创作",
+            "图形设计"
+        ],
+        "category": "AI设计",
+        "rating": 4.3
+    },
+    {
+        "name": "Adobe Firefly",
+        "url": "https://www.adobe.com/sensei/generative-ai/firefly.html",
+        "description": "Adobe的创意生成AI工具，用于生成图像、文本效果和设计素材",
+        "logo": "https://www.adobe.com/favicon.ico",
+        "tags": [
+            "设计工具",
+            "AI创作",
+            "创意生成"
+        ],
+        "category": "AI设计",
+        "rating": 4.2
+    },
+    {
+        "name": "Descript",
+        "url": "https://www.descript.com/",
+        "description": "AI视频编辑工具，支持文本编辑视频、自动字幕和语音克隆",
+        "logo": "https://www.descript.com/favicon.ico",
+        "tags": [
+            "视频编辑",
+            "AI音频",
+            "内容创作"
+        ],
+        "category": "AI视频",
+        "rating": 4.1
+    },
+    {
+        "name": "ElevenLabs",
+        "url": "https://elevenlabs.io/",
+        "description": "AI语音生成平台，支持创建逼真的语音合成和语音克隆",
+        "logo": "https://elevenlabs.io/favicon.ico",
+        "tags": [
+            "AI音频",
+            "语音生成",
+            "语音合成"
+        ],
+        "category": "AI音频",
+        "rating": 4.4
+    },
+    {
+        "name": "Otter.ai",
+        "url": "https://otter.ai/",
+        "description": "AI语音转文字工具，实时记录和转录会议、讲座等内容",
+        "logo": "https://otter.ai/favicon.ico",
+        "tags": [
+            "AI音频",
+            "语音转文字",
+            " productivity"
+        ],
+        "category": "AI工具",
+        "rating": 4.0
+    },
+    {
+        "name": "Figma AI",
+        "url": "https://www.figma.com/ai/",
+        "description": "Figma的AI设计助手，帮助用户快速创建和编辑设计作品",
+        "logo": "https://www.figma.com/favicon.ico",
+        "tags": [
+            "设计工具",
+            "AI创作",
+            "协作工具"
+        ],
+        "category": "AI设计",
+        "rating": 4.3
+    },
+    {
+        "name": "Zapier AI",
+        "url": "https://zapier.com/ai",
+        "description": "Zapier的AI自动化工具，帮助用户创建智能工作流和自动化任务",
+        "logo": "https://zapier.com/favicon.ico",
+        "tags": [
+            "自动化",
+            "AI助手",
+            " productivity"
+        ],
+        "category": "AI工具",
+        "rating": 4.2
     }
 ]
