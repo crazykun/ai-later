@@ -25,9 +25,17 @@ func main() {
 	store := cookie.NewStore([]byte("secret_key"))
 	r.Use(sessions.Sessions("admin_session", store))
 
-	// Load HTML templates - use glob pattern that excludes directories
-	r.LoadHTMLGlob("templates/*.html")
-	r.LoadHTMLGlob("templates/admin/*.html")
+	// Load HTML templates - explicitly list files to avoid directory issues
+	r.LoadHTMLFiles(
+		"templates/index.html",
+		"templates/error.html",
+		"templates/layout.html",
+		"templates/admin/admin-login.html",
+		"templates/admin/admin-index.html",
+		"templates/admin/admin-sites.html",
+		"templates/admin/admin-add-site.html",
+		"templates/admin/admin-edit-site.html",
+	)
 
 	// Serve static files
 	r.Static("/static", "./static")
