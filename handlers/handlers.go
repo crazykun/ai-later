@@ -81,8 +81,8 @@ func watchFileChanges() {
 func getUniqueCategories(sites []models.Site) map[string]bool {
 	categories := make(map[string]bool)
 	for _, site := range sites {
-		for _, tag := range site.Tags {
-			categories[tag] = true
+		if site.Category != "" {
+			categories[site.Category] = true
 		}
 	}
 	return categories
@@ -93,7 +93,7 @@ func filterSites(sites []models.Site, query string, category string, sortBy stri
 	query = strings.ToLower(query)
 
 	for _, site := range sites {
-		if category != "" && !contains(site.Tags, category) {
+		if category != "" && site.Category != category {
 			continue
 		}
 

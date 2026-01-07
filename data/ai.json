@@ -132,7 +132,7 @@
             "图像生成",
             "艺术创作"
         ],
-        "category": "AI绘画",
+        "category": "AI创作",
         "rating": 4.7,
         "featured": true
     },
@@ -146,7 +146,7 @@
             "图像生成",
             "图像编辑"
         ],
-        "category": "AI绘画",
+        "category": "AI创作",
         "rating": 4.6
     },
     {
@@ -159,7 +159,7 @@
             "图像生成",
             "开源"
         ],
-        "category": "AI绘画",
+        "category": "AI创作",
         "rating": 4.5
     },
     {
@@ -172,7 +172,7 @@
             "视频编辑",
             "内容创作"
         ],
-        "category": "AI视频",
+        "category": "AI创作",
         "rating": 4.4
     },
     {
@@ -185,7 +185,7 @@
             "数字人",
             "视频生成"
         ],
-        "category": "AI视频",
+        "category": "AI创作",
         "rating": 4.3
     },
     {
@@ -198,7 +198,7 @@
             "音乐生成",
             "配乐制作"
         ],
-        "category": "AI音频",
+        "category": "AI创作",
         "rating": 4.2
     },
     {
@@ -228,19 +228,6 @@
         "rating": 4.3
     },
     {
-        "name": "ima",
-        "url": "https://ima.qq.com/",
-        "description": "会思考的知识库，开启读写搜新体验。",
-        "logo": "/static/img/nav-ai-ima.png",
-        "tags": [
-            "知识库",
-            "文档助手",
-            "信息管理"
-        ],
-        "category": "AI工具",
-        "rating": 4.0
-    },
-    {
         "name": "GitHub Copilot",
         "url": "https://github.com/features/copilot",
         "description": "由GitHub和OpenAI合作开发的AI代码助手，实时提供代码建议和自动完成",
@@ -253,6 +240,19 @@
         "category": "AI编程",
         "rating": 4.6,
         "featured": true
+    },
+    {
+        "name": "ima",
+        "url": "https://ima.qq.com/",
+        "description": "会思考的知识库，开启读写搜新体验。",
+        "logo": "/static/img/nav-ai-ima.png",
+        "tags": [
+            "知识库",
+            "文档助手",
+            "信息管理"
+        ],
+        "category": "AI工具",
+        "rating": 4.0
     },
     {
         "name": "Perplexity AI",
@@ -275,7 +275,7 @@
         "tags": [
             "文档助手",
             "AI写作",
-            " productivity"
+            "productivity"
         ],
         "category": "AI工具",
         "rating": 4.4
@@ -290,7 +290,7 @@
             "AI创作",
             "图形设计"
         ],
-        "category": "AI设计",
+        "category": "AI创作",
         "rating": 4.3
     },
     {
@@ -303,7 +303,7 @@
             "AI创作",
             "创意生成"
         ],
-        "category": "AI设计",
+        "category": "AI创作",
         "rating": 4.2
     },
     {
@@ -316,7 +316,7 @@
             "AI音频",
             "内容创作"
         ],
-        "category": "AI视频",
+        "category": "AI创作",
         "rating": 4.1
     },
     {
@@ -329,7 +329,7 @@
             "语音生成",
             "语音合成"
         ],
-        "category": "AI音频",
+        "category": "AI创作",
         "rating": 4.4
     },
     {
@@ -340,7 +340,7 @@
         "tags": [
             "AI音频",
             "语音转文字",
-            " productivity"
+            "productivity"
         ],
         "category": "AI工具",
         "rating": 4.0
@@ -355,7 +355,7 @@
             "AI创作",
             "协作工具"
         ],
-        "category": "AI设计",
+        "category": "AI创作",
         "rating": 4.3
     },
     {
@@ -366,7 +366,7 @@
         "tags": [
             "自动化",
             "AI助手",
-            " productivity"
+            "productivity"
         ],
         "category": "AI工具",
         "rating": 4.2
