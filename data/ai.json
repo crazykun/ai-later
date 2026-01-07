@@ -496,6 +496,49 @@
         ],
         "category": "AI工具",
         "rating": 4.4,
+        "featured": true    
+    },
+    {
+        "name": "GLM",
+        "url": "https://chat.z.ai/",
+        "description": "Z.ai开发的GLM，全称为General Language Model，是一个通用语言模型",
+        "logo": "",
+        "tags": [
+            "AI对话",
+            "语言模型",
+            "通用语言模型"
+        ],
+        "category": "AI对话",
+        "rating": 4.4,
+        "featured": true
+    },
+    {
+        "name": "智谱情言",
+        "url": "https://chatglm.cn/",
+        "description": "智谱情言是一个基于语言模型的AI助手，提供智能对话和信息查询功能",
+        "logo": "",
+        "tags": [
+            "AI对话",
+            "语言模型",
+            "智能助手"
+        ],
+        "category": "AI对话",
+        "rating": 4.5,
+        "featured": true
+    },
+    {
+        "name": "xiaomi mimo",
+        "url": "https://aistudio.xiaomimimo.com/#/",
+        "description": "xiaomi mimo是一个基于语言模型的AI助手，提供智能对话和信息查询功能",
+        "logo": "",
+        "tags": [
+            "AI对话",
+            "语言模型",
+            "智能助手",
+            "API"
+        ],
+        "category": "AI对话",
+        "rating": 4.5,
         "featured": true
     }
 ]
