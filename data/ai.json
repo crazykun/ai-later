@@ -370,5 +370,132 @@
         ],
         "category": "AI工具",
         "rating": 4.2
+    },
+    {
+        "name": "Gemini",
+        "url": "https://gemini.google.com",
+        "description": "Google开发的多模态AI助手，支持文本、图像等多种输入方式",
+        "logo": "",
+        "tags": [
+            "AI对话",
+            "多模态",
+            "智能助手"
+        ],
+        "category": "AI对话",
+        "rating": 4.6,
+        "featured": true
+    },
+    {
+        "name": "讯飞星火",
+        "url": "https://xinghuo.ai/",
+        "description": "科大讯飞开发的认知智能大模型，具备深度推理和多语言支持能力",
+        "logo": "",
+        "tags": [
+            "AI对话",
+            "语言模型",
+            "智能助手",
+            "中文优化"
+        ],
+        "category": "AI对话",
+        "rating": 4.4,
+        "featured": true
+    },
+    {
+        "name": "Mistral AI",
+        "url": "https://mistral.ai/",
+        "description": "开源大规模语言模型，适用于多种任务，支持本地部署",
+        "logo": "",
+        "tags": [
+            "AI对话",
+            "语言模型",
+            "开源",
+            "多语言"
+        ],
+        "category": "AI对话",
+        "rating": 4.3
+    },
+    {
+        "name": "DALL-E 3",
+        "url": "https://openai.com/dall-e-3",
+        "description": "OpenAI开发的最新图像生成模型，擅长理解复杂提示并生成高质量图像",
+        "logo": "",
+        "tags": [
+            "AI绘画",
+            "图像生成",
+            "文生图"
+        ],
+        "category": "AI创作",
+        "rating": 4.7,
+        "featured": true
+    },
+    {
+        "name": "Stable Diffusion XL",
+        "url": "https://stability.ai/stable-diffusion",
+        "description": "开源的高级图像生成模型，支持本地部署和高度自定义配置",
+        "logo": "",
+        "tags": [
+            "AI绘画",
+            "图像生成",
+            "开源",
+            "自定义"
+        ],
+        "category": "AI创作",
+        "rating": 4.5
+    },
+    {
+        "name": "文心快码",
+        "url": "https://comate.baidu.com/",
+        "description": "百度开发的全栈自动编程智能体，支持多种编程语言和IDE",
+        "logo": "",
+        "tags": [
+            "代码助手",
+            "AI编程",
+            "智能补全",
+            "中文优化"
+        ],
+        "category": "AI编程",
+        "rating": 4.3
+    },
+    {
+        "name": "腾讯云代码助手",
+        "url": "https://cloud.tencent.com/product/acc",
+        "description": "腾讯云开发的AI编程工具，支持超过200种编程语言和主流IDE",
+        "logo": "",
+        "tags": [
+            "代码助手",
+            "AI编程",
+            "智能诊断",
+            "中文优化"
+        ],
+        "category": "AI编程",
+        "rating": 4.2
+    },
+    {
+        "name": "FastGPT",
+        "url": "https://fastgpt.run/",
+        "description": "基于知识库的AI问答系统构建工具，适合快速构建精准问答应用",
+        "logo": "",
+        "tags": [
+            "知识库",
+            "问答系统",
+            "AI工具"
+        ],
+        "category": "AI工具",
+        "rating": 4.1
+    },
+    {
+        "name": "Dify",
+        "url": "https://dify.ai/",
+        "description": "功能全面的开源LLM应用开发平台，适合快速构建复杂AI工作流",
+        "logo": "",
+        "tags": [
+            "开发平台",
+            "AI工具",
+            "工作流",
+            "开源"
+        ],
+        "category": "AI工具",
+        "rating": 4.4,
+        "featured": true
     }
 ]
