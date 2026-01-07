@@ -3,6 +3,7 @@ package handlers
 
 import (
 	"ai-navigator/models"
+	"ai-navigator/utils"
 	"encoding/json"
 	"log"
 	"net/http"
@@ -162,8 +163,18 @@ func HomeHandler(c *gin.Context) {
 
 	copyright, _ := c.Get("Copyright")
 
+	// 转换站点为显示格式，包含颜色和首字母
+	displaySites := make([]models.SiteDisplay, len(sites))
+	for i, site := range sites {
+		displaySites[i] = models.SiteDisplay{
+			Site:     site,
+			Color:    utils.GenerateColorFromName(site.Name),
+			Initials: utils.GetInitialsFromName(site.Name),
+		}
+	}
+
 	c.HTML(http.StatusOK, "index.html", gin.H{
-		"sites":      sites,
+		"sites":      displaySites,
 		"categories": getUniqueCategories(sites),
 		"Copyright":  copyright,
 	})
@@ -179,8 +190,18 @@ func SearchHandler(c *gin.Context) {
 
 	filtered := filterSites(sites, query, category, sortBy)
 
+	// 转换站点为显示格式，包含颜色和首字母
+	displaySites := make([]models.SiteDisplay, len(filtered))
+	for i, site := range filtered {
+		displaySites[i] = models.SiteDisplay{
+			Site:     site,
+			Color:    utils.GenerateColorFromName(site.Name),
+			Initials: utils.GetInitialsFromName(site.Name),
+		}
+	}
+
 	c.HTML(http.StatusOK, "index.html", gin.H{
-		"sites":            filtered,
+		"sites":            displaySites,
 		"categories":       getUniqueCategories(sites),
 		"query":            query,
 		"selectedCategory": category,
@@ -232,8 +253,18 @@ func AdminSitesHandler(c *gin.Context) {
 	sitesLock.RLock()
 	defer sitesLock.RUnlock()
 
+	// 转换站点为显示格式，包含颜色和首字母
+	displaySites := make([]models.SiteDisplay, len(sites))
+	for i, site := range sites {
+		displaySites[i] = models.SiteDisplay{
+			Site:     site,
+			Color:    utils.GenerateColorFromName(site.Name),
+			Initials: utils.GetInitialsFromName(site.Name),
+		}
+	}
+
 	c.HTML(http.StatusOK, "admin-sites.html", gin.H{
-		"sites":   sites,
+		"sites":   displaySites,
 		"isAdmin": true,
 	})
 }

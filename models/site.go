@@ -17,3 +17,10 @@ type Site struct {
 	Featured    bool     `json:"featured,omitempty"`
 	CreatedAt   string   `json:"created_at,omitempty"`
 }
+
+// SiteDisplay 用于前端显示的站点信息，包含额外的显示字段
+type SiteDisplay struct {
+	Site
+	Color  string `json:"color"`
+	Initials string `json:"initials"`
+}

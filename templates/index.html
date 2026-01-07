@@ -59,13 +59,19 @@
             <!-- Sites Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-6">
                 {{ range .sites }}
-                <div class="bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-xl hover:shadow-blue-100/50 transition-all duration-300 transform hover:-translate-y-2 flex flex-col min-h-80 group relative overflow-hidden">
+                <div class="bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-xl hover:shadow-blue-100/50 transition-all duration-300 transform hover:-translate-y-2 flex flex-col min-h-80 group relative overflow-hidden" data-name="{{ .Name }}">
                     <!-- 装饰性背景渐变 -->
                     <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-50 to-purple-50 rounded-full -translate-y-16 translate-x-16 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     
                     <div class="flex flex-row items-start gap-4 mb-4 relative z-10">
                         <div class="relative">
+                            {{ if .Logo }}
                             <img src="{{ .Logo }}" alt="{{ .Name }} logo" class="w-16 h-16 object-contain rounded-xl border border-gray-100 group-hover:scale-110 transition-transform duration-300 shadow-sm">
+                            {{ else }}
+                            <div class="w-16 h-16 rounded-xl border border-gray-100 flex items-center justify-center text-white font-bold text-lg shadow-sm" style="background-color: {{ .Color }}">
+                                {{ .Initials }}
+                            </div>
+                            {{ end }}
                             <div class="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
                         </div>
                         <div class="flex-1">

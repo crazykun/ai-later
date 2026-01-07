@@ -282,6 +282,88 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // 处理图片加载失败的函数
+    function handleImageError(imgElement) {
+        // 获取站点名称（从父级容器获取）
+        const card = imgElement.closest('[data-name]');
+        if (!card) return;
+        
+        const siteName = card.getAttribute('data-name');
+        if (!siteName) return;
+        
+        // 生成颜色和首字母
+        const color = generateColorFromName(siteName);
+        const initials = getInitialsFromName(siteName);
+        
+        // 替换图片为彩色文字框
+        const container = imgElement.parentElement;
+        const placeholderDiv = document.createElement('div');
+        placeholderDiv.className = imgElement.className; // 继承原图片的类名
+        placeholderDiv.style.backgroundColor = color;
+        placeholderDiv.style.display = 'flex';
+        placeholderDiv.style.alignItems = 'center';
+        placeholderDiv.style.justifyContent = 'center';
+        placeholderDiv.style.color = 'white';
+        placeholderDiv.style.fontWeight = 'bold';
+        placeholderDiv.style.fontSize = imgElement.classList.contains('h-10') && imgElement.classList.contains('w-10') ? '0.875rem' : '1.125rem'; // text-sm 或 text-lg
+        placeholderDiv.textContent = initials;
+        
+        container.replaceChild(placeholderDiv, imgElement);
+    }
+    
+    // 根据网站名称生成颜色（与后端逻辑保持一致）
+    function generateColorFromName(name) {
+        // 使用简单的哈希算法生成一致的颜色
+        let hash = 0;
+        for (let i = 0; i < name.length; i++) {
+            hash = name.charCodeAt(i) + ((hash << 5) - hash);
+        }
+        
+        // 计算色调 (0-360度)
+        const h = hash % 360;
+        
+        // 固定饱和度和亮度
+        const s = 70;  // 饱和度 70%
+        const l = 65;  // 亮度 65%
+        
+        return hslToHex(h, s, l);
+    }
+    
+    // HSL 转换为十六进制颜色
+    function hslToHex(h, s, l) {
+        l /= 100;
+        const a = s * Math.min(l, 1 - l) / 100;
+        const f = n => {
+            const k = (n + h / 30) % 12;
+            const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+            return Math.round(255 * color).toString(16).padStart(2, '0');   // convert to Hex and prefix "0" if needed
+        };
+        return `#${f(0)}${f(8)}${f(4)}`;
+    }
+    
+    // 从网站名称获取首字母
+    function getInitialsFromName(name) {
+        if (!name) return '?';
+        
+        // 对于中文或英文，取前1-2个字符
+        if (name.length <= 2) {
+            return name.substring(0, 2);
+        } else {
+            return name.substring(0, 2);
+        }
+    }
+    
+    // 为所有图片添加错误处理
+    document.addEventListener('DOMContentLoaded', function() {
+        // 查找所有站点卡片中的图片
+        const siteImages = document.querySelectorAll('.grid > div img[src]');
+        siteImages.forEach(img => {
+            img.onerror = function() {
+                handleImageError(this);
+            };
+        });
+    });
+    
     // ESC键关闭移动端菜单
     document.addEventListener('keydown', function(event) {
         if (event.key === 'Escape' && isMobile()) {

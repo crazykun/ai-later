@@ -258,7 +258,7 @@
         "name": "Perplexity AI",
         "url": "https://www.perplexity.ai",
         "description": "智能搜索引擎，结合AI技术提供更准确、更详细的搜索结果",
-        "logo": "https://www.perplexity.ai/favicon.ico",
+        "logo": "",
         "tags": [
             "搜索引擎",
             "AI助手",
@@ -271,7 +271,7 @@
         "name": "Notion AI",
         "url": "https://www.notion.so/ai",
         "description": "集成在Notion中的AI助手，帮助用户撰写、编辑和组织文档内容",
-        "logo": "https://www.notion.so/favicon.ico",
+        "logo": "",
         "tags": [
             "文档助手",
             "AI写作",
@@ -284,7 +284,7 @@
         "name": "Canva AI",
         "url": "https://www.canva.com/ai/",
         "description": "Canva的AI设计工具，帮助用户快速创建专业的设计作品",
-        "logo": "https://www.canva.com/favicon.ico",
+        "logo": "",
         "tags": [
             "设计工具",
             "AI创作",
@@ -310,7 +310,7 @@
         "name": "Descript",
         "url": "https://www.descript.com/",
         "description": "AI视频编辑工具，支持文本编辑视频、自动字幕和语音克隆",
-        "logo": "https://www.descript.com/favicon.ico",
+        "logo": "",
         "tags": [
             "视频编辑",
             "AI音频",
@@ -349,7 +349,7 @@
         "name": "Figma AI",
         "url": "https://www.figma.com/ai/",
         "description": "Figma的AI设计助手，帮助用户快速创建和编辑设计作品",
-        "logo": "https://www.figma.com/favicon.ico",
+        "logo": "",
         "tags": [
             "设计工具",
             "AI创作",
@@ -362,7 +362,7 @@
         "name": "Zapier AI",
         "url": "https://zapier.com/ai",
         "description": "Zapier的AI自动化工具，帮助用户创建智能工作流和自动化任务",
-        "logo": "https://zapier.com/favicon.ico",
+        "logo": "",
         "tags": [
             "自动化",
             "AI助手",
