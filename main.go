@@ -25,17 +25,9 @@ func main() {
 	store := cookie.NewStore([]byte("secret_key"))
 	r.Use(sessions.Sessions("admin_session", store))
 
-	// Load HTML templates
-	r.LoadHTMLFiles(
-		"templates/index.html", 
-		"templates/error.html", 
-		"templates/layout.html",
-		"templates/admin/admin-login.html", 
-		"templates/admin/admin-index.html", 
-		"templates/admin/admin-sites.html", 
-		"templates/admin/admin-add-site.html", 
-		"templates/admin/admin-edit-site.html",
-	)
+	// Load HTML templates - use glob pattern that excludes directories
+	r.LoadHTMLGlob("templates/*.html")
+	r.LoadHTMLGlob("templates/admin/*.html")
 
 	// Serve static files
 	r.Static("/static", "./static")
@@ -68,9 +60,12 @@ func main() {
 		}
 	}
 
-	// Start server on port 8080
-	log.Println("Server starting on http://localhost:" + global.ConfigData.Port)
-	r.Run(":" + global.ConfigData.Port)
+	// Get port from config
+	port := getPort()
+
+	// Start server on configured port
+	log.Println("Server starting on http://localhost:" + port)
+	r.Run(":" + port)
 }
 
 func initConfig() {
@@ -84,9 +79,23 @@ func initConfig() {
 		global.ConfigData = &config.Config{
 			Port: "8080",
 		}
+		return
 	}
 
 	if err := viper.Unmarshal(&global.ConfigData); err != nil {
 		log.Fatalf("Unable to decode into struct, %v", err)
 	}
+}
+
+func getPort() string {
+	// Try to get port from the new nested structure first
+	if global.ConfigData.Server.Port != "" {
+		return global.ConfigData.Server.Port
+	}
+	// Fall back to the old flat structure
+	if global.ConfigData.Port != "" {
+		return global.ConfigData.Port
+	}
+	// Default port
+	return "8080"
 }
