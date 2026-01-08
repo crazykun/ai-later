@@ -7,22 +7,22 @@ import (
 	"ai-navigator/middleware"
 	"log"
 
-	"ai-navigator/global"
-
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-contrib/sessions/cookie"
 	"github.com/gin-gonic/gin"
-	"github.com/spf13/viper"
 )
 
 func main() {
-	initConfig()
+	// Load config
+	if err := config.LoadConfig(); err != nil {
+		log.Fatalf("Failed to load config: %v", err)
+	}
 
 	// Create a new Gin router with default middleware
 	r := gin.Default()
 
 	// Setup session
-	store := cookie.NewStore([]byte("secret_key"))
+	store := cookie.NewStore([]byte(config.AppConfig.Session.Secret))
 	r.Use(sessions.Sessions("admin_session", store))
 
 	// Load HTML templates - explicitly list files to avoid directory issues
@@ -53,6 +53,7 @@ func main() {
 		admin.GET("/login", handlers.AdminLoginHandler)
 		admin.POST("/login", handlers.AdminLoginPostHandler)
 		admin.GET("/logout", handlers.AdminLogoutHandler)
+		admin.GET("/captcha", handlers.CaptchaHandler)
 
 		// Protected admin routes
 		adminAuth := admin.Group("/")
@@ -68,42 +69,12 @@ func main() {
 		}
 	}
 
-	// Get port from config
-	port := getPort()
-
 	// Start server on configured port
-	log.Println("Server starting on http://localhost:" + port)
-	r.Run(":" + port)
-}
-
-func initConfig() {
-	// Load configuration from file
-	viper.SetConfigName("config")
-	viper.AddConfigPath(".") // Look for config in the current directory
-
-	if err := viper.ReadInConfig(); err != nil {
-		// 配置文件不存在, 使用默认配置
-		log.Println("No configuration file found, using default values")
-		global.ConfigData = &config.Config{
-			Port: "8080",
-		}
-		return
-	}
-
-	if err := viper.Unmarshal(&global.ConfigData); err != nil {
-		log.Fatalf("Unable to decode into struct, %v", err)
-	}
+	log.Println("Server starting on http://localhost:8080")
+	r.Run(":8080")
 }
 
 func getPort() string {
-	// Try to get port from the new nested structure first
-	if global.ConfigData.Server.Port != "" {
-		return global.ConfigData.Server.Port
-	}
-	// Fall back to the old flat structure
-	if global.ConfigData.Port != "" {
-		return global.ConfigData.Port
-	}
 	// Default port
 	return "8080"
 }

@@ -1,0 +1,9 @@
+{
+  "admin": {
+    "username": "admin",
+    "password": "admin123"
+  },
+  "session": {
+    "secret": "your-secret-key-here"
+  }
+}

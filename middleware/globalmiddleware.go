@@ -1,7 +1,6 @@
 package middleware
 
 import (
-	"ai-navigator/global"
 	"net/http"
 
 	"github.com/gin-contrib/sessions"
@@ -10,7 +9,7 @@ import (
 
 func AddGlobalContext() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		c.Set("Copyright", global.ConfigData.Copyright)
+		c.Set("Copyright", "AI导航 © 2024")
 		c.Next()
 	}
 }

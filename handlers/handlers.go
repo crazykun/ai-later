@@ -2,6 +2,7 @@
 package handlers
 
 import (
+	"ai-navigator/config"
 	"ai-navigator/models"
 	"ai-navigator/utils"
 	"encoding/json"
@@ -218,9 +219,18 @@ func AdminLoginHandler(c *gin.Context) {
 func AdminLoginPostHandler(c *gin.Context) {
 	username := c.PostForm("username")
 	password := c.PostForm("password")
+	captcha := c.PostForm("captcha")
 
-	// Simple authentication (in production, use more secure method)
-	if username == "admin" && password == "admin123" {
+	// 验证验证码
+	if !utils.ValidateCaptcha(c, captcha) {
+		c.HTML(http.StatusOK, "admin-login.html", gin.H{
+			"error": "验证码错误",
+		})
+		return
+	}
+
+	// 验证用户名和密码
+	if username == config.AppConfig.Admin.Username && password == config.AppConfig.Admin.Password {
 		session := sessions.Default(c)
 		session.Set("admin_logged_in", true)
 		session.Save()
@@ -237,6 +247,11 @@ func AdminLogoutHandler(c *gin.Context) {
 	session.Set("admin_logged_in", false)
 	session.Save()
 	c.Redirect(http.StatusFound, "/admin/login")
+}
+
+// CaptchaHandler 处理验证码图片请求
+func CaptchaHandler(c *gin.Context) {
+	utils.CaptchaHandler(c)
 }
 
 func AdminIndexHandler(c *gin.Context) {
