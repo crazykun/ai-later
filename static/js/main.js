@@ -1,9 +1,35 @@
 // static/js/main.js
 document.addEventListener('DOMContentLoaded', function() {
+    // 页面加载动画
+    setTimeout(() => {
+        const loader = document.getElementById('loader');
+        if (loader) {
+            loader.classList.add('hidden');
+        }
+        
+        // 页面元素渐入效果
+        const pageContent = document.querySelector('main, .container');
+        if (pageContent) {
+            pageContent.classList.add('page-fade-in');
+        }
+    }, 1000);
+    
+    // 导航栏滚动效果
+    const header = document.querySelector('.header-scroll');
+    if (header) {
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    }
+    
     // Add fade-in animation to site cards
     const siteCards = document.querySelectorAll('.grid > div');
     siteCards.forEach((card, index) => {
-        card.classList.add('fade-in');
+        card.classList.add('fade-in', 'card-stagger');
         card.style.animationDelay = `${index * 0.1}s`;
     });
 

@@ -82,19 +82,36 @@ func GetInitialsFromName(name string) string {
 
 	// 获取第一个字符作为首字母
 	// 如果是多字节字符（如中文），则获取第一个字符
-	for _, r := range name {
-		// 取第一个字符
-		initial := string(r)
-		// 如果名称较长，添加第二个字符作为补充
-		if len(name) > 3 {
-			// 取前两个字符，但不超过3个字符
-			runes := []rune(name)
-			if len(runes) >= 2 {
-				initial = string(runes[0:2])
-			}
-		}
-		return initial
+	runes := []rune(name)
+	if len(runes) == 0 {
+		return "?"
 	}
 
-	return "?"
+	// 检查是否有多个英文单词（包含空格）
+	if len(name) > 3 {
+		// 查找第一个空格
+		spaceIndex := -1
+		for i, char := range name {
+			if char == ' ' {
+				spaceIndex = i
+				break
+			}
+		}
+
+		// 如果有空格，取前两个单词的首字母
+		if spaceIndex > 0 && spaceIndex < len(name)-1 {
+			firstChar := string(name[0])
+			secondChar := string(name[spaceIndex+1])
+			return firstChar + secondChar
+		}
+	}
+
+	// 取第一个字符
+	initial := string(runes[0])
+	// 如果名称较长，添加第二个字符作为补充
+	if len(runes) > 3 && len(runes) >= 2 {
+		initial = string(runes[0:2])
+	}
+
+	return initial
 }
