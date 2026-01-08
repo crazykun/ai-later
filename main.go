@@ -70,11 +70,10 @@ func main() {
 	}
 
 	// Start server on configured port
-	log.Println("Server starting on http://localhost:8080")
-	r.Run(":8080")
-}
-
-func getPort() string {
-	// Default port
-	return "8080"
+	port := config.AppConfig.Port
+	if port == "" {
+		port = "8080"
+	}
+	log.Printf("Server starting on http://localhost:%s", port)
+	r.Run(":" + port)
 }
