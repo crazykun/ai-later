@@ -1,7 +1,7 @@
 [
     {
         "name": "通义千问",
-        "url": "https://tongyi.aliyun.com/qianwen/",
+        "url": "https://www.qianwen.com/",
         "description": "由阿里云开发的人工智能助手",
         "logo": "/static/img/nav-ai-tongyi.png",
         "tags": [
