@@ -9,7 +9,7 @@ import (
 
 func AddGlobalContext() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		c.Set("Copyright", "AI导航 © 2024")
+		c.Set("Copyright", "AI导航 © 2026")
 		c.Next()
 	}
 }

@@ -101,7 +101,7 @@ func createCaptchaImage(captcha string) image.Image {
 	}
 
 	// 绘制验证码文字
-	for i := range captcha {
+	for i, char := range captcha {
 		// 随机位置和颜色
 		x, _ := rand.Int(rand.Reader, big.NewInt(int64(captchaWidth/4)))
 		y, _ := rand.Int(rand.Reader, big.NewInt(int64(captchaHeight/2)))
@@ -109,24 +109,344 @@ func createCaptchaImage(captcha string) image.Image {
 		g, _ := rand.Int(rand.Reader, big.NewInt(100))
 		b, _ := rand.Int(rand.Reader, big.NewInt(100))
 
-		// 简单绘制字符
-		charX := 20 + i*30 + int(x.Int64())
-		charY := 30 + int(y.Int64())
+		// 计算字符位置
+		charX := 20 + i*25 + int(x.Int64())
+		charY := 25 + int(y.Int64())
 		charColor := color.RGBA{byte(r.Int64()), byte(g.Int64()), byte(b.Int64()), 255}
 
-		// 绘制字符的简单表示
-		for dx := -4; dx <= 4; dx++ {
-			for dy := -4; dy <= 4; dy++ {
-				if (dx*dx + dy*dy) <= 16 {
-					if charX+dx >= 0 && charX+dx < captchaWidth && charY+dy >= 0 && charY+dy < captchaHeight {
-						img.Set(charX+dx, charY+dy, charColor)
+		// 绘制字符
+		drawChar(img, char, charX, charY, charColor)
+	}
+
+	return img
+}
+
+// drawChar 绘制单个字符
+func drawChar(img *image.RGBA, char rune, x, y int, color color.RGBA) {
+	// 简单的字符绘制，使用点来组成字符
+	// 这里为了演示，只实现了数字0-9和部分字母的绘制
+	// 实际应用中应该使用真实的字体渲染
+	charStr := string(char)
+
+	// 定义字符的点阵表示
+	var dots [][]bool
+	switch charStr {
+	case "0":
+		dots = [][]bool{
+			{false, true, true, true, false},
+			{true, false, false, false, true},
+			{true, false, false, false, true},
+			{true, false, false, false, true},
+			{false, true, true, true, false},
+		}
+	case "1":
+		dots = [][]bool{
+			{false, false, true, false, false},
+			{false, true, true, false, false},
+			{true, false, true, false, false},
+			{false, false, true, false, false},
+			{true, true, true, true, true},
+		}
+	case "2":
+		dots = [][]bool{
+			{true, true, true, true, false},
+			{false, false, false, true, false},
+			{false, true, true, true, false},
+			{true, false, false, false, false},
+			{true, true, true, true, true},
+		}
+	case "3":
+		dots = [][]bool{
+			{true, true, true, true, false},
+			{false, false, false, true, false},
+			{false, true, true, true, false},
+			{false, false, false, true, false},
+			{true, true, true, true, false},
+		}
+	case "4":
+		dots = [][]bool{
+			{false, false, false, true, false},
+			{false, false, true, true, false},
+			{false, true, false, true, false},
+			{true, true, true, true, true},
+			{false, false, false, true, false},
+		}
+	case "5":
+		dots = [][]bool{
+			{true, true, true, true, true},
+			{true, false, false, false, false},
+			{true, true, true, true, false},
+			{false, false, false, true, false},
+			{true, true, true, true, false},
+		}
+	case "6":
+		dots = [][]bool{
+			{false, true, true, true, false},
+			{true, false, false, false, false},
+			{true, true, true, true, false},
+			{true, false, false, true, false},
+			{false, true, true, true, false},
+		}
+	case "7":
+		dots = [][]bool{
+			{true, true, true, true, true},
+			{false, false, false, true, false},
+			{false, false, true, false, false},
+			{false, true, false, false, false},
+			{true, false, false, false, false},
+		}
+	case "8":
+		dots = [][]bool{
+			{false, true, true, true, false},
+			{true, false, false, true, false},
+			{false, true, true, true, false},
+			{true, false, false, true, false},
+			{false, true, true, true, false},
+		}
+	case "9":
+		dots = [][]bool{
+			{false, true, true, true, false},
+			{true, false, false, true, false},
+			{false, true, true, true, true},
+			{false, false, false, true, false},
+			{false, true, true, true, false},
+		}
+	case "A":
+		dots = [][]bool{
+			{false, true, true, false, false},
+			{true, false, false, true, false},
+			{true, true, true, true, false},
+			{true, false, false, true, false},
+			{true, false, false, true, false},
+		}
+	case "B":
+		dots = [][]bool{
+			{true, true, true, false, false},
+			{true, false, false, true, false},
+			{true, true, true, false, false},
+			{true, false, false, true, false},
+			{true, true, true, false, false},
+		}
+	case "C":
+		dots = [][]bool{
+			{false, true, true, true, false},
+			{true, false, false, false, false},
+			{true, false, false, false, false},
+			{true, false, false, false, false},
+			{false, true, true, true, false},
+		}
+	case "D":
+		dots = [][]bool{
+			{true, true, false, false, false},
+			{true, false, true, false, false},
+			{true, false, false, true, false},
+			{true, false, true, false, false},
+			{true, true, false, false, false},
+		}
+	case "E":
+		dots = [][]bool{
+			{true, true, true, true, false},
+			{true, false, false, false, false},
+			{true, true, true, false, false},
+			{true, false, false, false, false},
+			{true, true, true, true, false},
+		}
+	case "F":
+		dots = [][]bool{
+			{true, true, true, true, false},
+			{true, false, false, false, false},
+			{true, true, true, false, false},
+			{true, false, false, false, false},
+			{true, false, false, false, false},
+		}
+	case "G":
+		dots = [][]bool{
+			{false, true, true, true, false},
+			{true, false, false, false, false},
+			{true, false, true, true, false},
+			{true, false, false, true, false},
+			{false, true, true, true, false},
+		}
+	case "H":
+		dots = [][]bool{
+			{true, false, false, true, false},
+			{true, false, false, true, false},
+			{true, true, true, true, false},
+			{true, false, false, true, false},
+			{true, false, false, true, false},
+		}
+	case "I":
+		dots = [][]bool{
+			{true, true, true, true, true},
+			{false, false, true, false, false},
+			{false, false, true, false, false},
+			{false, false, true, false, false},
+			{true, true, true, true, true},
+		}
+	case "J":
+		dots = [][]bool{
+			{true, true, true, true, true},
+			{false, false, false, true, false},
+			{false, false, false, true, false},
+			{true, false, false, true, false},
+			{false, true, true, false, false},
+		}
+	case "K":
+		dots = [][]bool{
+			{true, false, false, true, false},
+			{true, false, true, false, false},
+			{true, true, false, false, false},
+			{true, false, true, false, false},
+			{true, false, false, true, false},
+		}
+	case "L":
+		dots = [][]bool{
+			{true, false, false, false, false},
+			{true, false, false, false, false},
+			{true, false, false, false, false},
+			{true, false, false, false, false},
+			{true, true, true, true, false},
+		}
+	case "M":
+		dots = [][]bool{
+			{true, false, false, false, true},
+			{true, true, false, true, true},
+			{true, false, true, false, true},
+			{true, false, false, false, true},
+			{true, false, false, false, true},
+		}
+	case "N":
+		dots = [][]bool{
+			{true, false, false, false, true},
+			{true, true, false, false, true},
+			{true, false, true, false, true},
+			{true, false, false, true, true},
+			{true, false, false, false, true},
+		}
+	case "O":
+		dots = [][]bool{
+			{false, true, true, true, false},
+			{true, false, false, true, false},
+			{true, false, false, true, false},
+			{true, false, false, true, false},
+			{false, true, true, true, false},
+		}
+	case "P":
+		dots = [][]bool{
+			{true, true, true, false, false},
+			{true, false, true, false, false},
+			{true, true, true, false, false},
+			{true, false, false, false, false},
+			{true, false, false, false, false},
+		}
+	case "Q":
+		dots = [][]bool{
+			{false, true, true, true, false},
+			{true, false, false, true, false},
+			{true, false, true, true, false},
+			{true, false, false, true, false},
+			{false, true, true, false, true},
+		}
+	case "R":
+		dots = [][]bool{
+			{true, true, true, false, false},
+			{true, false, true, false, false},
+			{true, true, true, false, false},
+			{true, false, true, false, false},
+			{true, false, false, true, false},
+		}
+	case "S":
+		dots = [][]bool{
+			{false, true, true, true, false},
+			{true, false, false, false, false},
+			{false, true, true, true, false},
+			{false, false, false, true, false},
+			{true, true, true, false, false},
+		}
+	case "T":
+		dots = [][]bool{
+			{true, true, true, true, true},
+			{false, false, true, false, false},
+			{false, false, true, false, false},
+			{false, false, true, false, false},
+			{false, false, true, false, false},
+		}
+	case "U":
+		dots = [][]bool{
+			{true, false, false, true, false},
+			{true, false, false, true, false},
+			{true, false, false, true, false},
+			{true, false, false, true, false},
+			{false, true, true, false, false},
+		}
+	case "V":
+		dots = [][]bool{
+			{true, false, false, false, true},
+			{true, false, false, false, true},
+			{false, true, false, true, false},
+			{false, true, false, true, false},
+			{false, false, true, false, false},
+		}
+	case "W":
+		dots = [][]bool{
+			{true, false, false, false, true},
+			{true, false, false, false, true},
+			{true, false, true, false, true},
+			{true, true, false, true, true},
+			{true, false, false, false, true},
+		}
+	case "X":
+		dots = [][]bool{
+			{true, false, false, false, true},
+			{false, true, false, true, false},
+			{false, false, true, false, false},
+			{false, true, false, true, false},
+			{true, false, false, false, true},
+		}
+	case "Y":
+		dots = [][]bool{
+			{true, false, false, false, true},
+			{false, true, false, true, false},
+			{false, false, true, false, false},
+			{false, false, true, false, false},
+			{false, false, true, false, false},
+		}
+	case "Z":
+		dots = [][]bool{
+			{true, true, true, true, true},
+			{false, false, false, true, false},
+			{false, false, true, false, false},
+			{false, true, false, false, false},
+			{true, true, true, true, true},
+		}
+	default:
+		// 对于未实现的字符，绘制一个问号
+		dots = [][]bool{
+			{false, false, true, false, false},
+			{false, false, true, false, false},
+			{false, false, true, false, false},
+			{false, false, false, false, false},
+			{false, false, true, false, false},
+		}
+	}
+
+	// 根据点阵绘制字符
+	for i := range dots {
+		for j := range dots[i] {
+			if dots[i][j] {
+				// 绘制点
+				for dx := -1; dx <= 1; dx++ {
+					for dy := -1; dy <= 1; dy++ {
+						px := x + j*4 + dx
+						py := y + i*4 + dy
+						if px >= 0 && px < captchaWidth && py >= 0 && py < captchaHeight {
+							img.Set(px, py, color)
+						}
 					}
 				}
 			}
 		}
 	}
-
-	return img
 }
 
 // min 返回两个整数中的较小值
