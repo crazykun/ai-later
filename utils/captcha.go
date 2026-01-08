@@ -110,8 +110,8 @@ func createCaptchaImage(captcha string) image.Image {
 		b, _ := rand.Int(rand.Reader, big.NewInt(100))
 
 		// 计算字符位置
-		charX := 20 + i*25 + int(x.Int64())
-		charY := 25 + int(y.Int64())
+		charX := 10 + i*22 + int(x.Int64())%5 // 限制x偏移量，确保字符在图片内
+		charY := 20 + int(y.Int64())%10       // 限制y偏移量，确保字符在图片内
 		charColor := color.RGBA{byte(r.Int64()), byte(g.Int64()), byte(b.Int64()), 255}
 
 		// 绘制字符
@@ -434,11 +434,11 @@ func drawChar(img *image.RGBA, char rune, x, y int, color color.RGBA) {
 	for i := range dots {
 		for j := range dots[i] {
 			if dots[i][j] {
-				// 绘制点
+				// 绘制点，缩小点的大小，确保字符完整显示
 				for dx := -1; dx <= 1; dx++ {
 					for dy := -1; dy <= 1; dy++ {
-						px := x + j*4 + dx
-						py := y + i*4 + dy
+						px := x + j*3 + dx // 使用3px的间距，缩小字符大小
+						py := y + i*3 + dy
 						if px >= 0 && px < captchaWidth && py >= 0 && py < captchaHeight {
 							img.Set(px, py, color)
 						}
