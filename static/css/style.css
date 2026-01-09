@@ -144,12 +144,22 @@
 
 /* 卡片悬停效果增强 */
 .card-hover {
+}
+
+.card-hover.transition-enabled:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.card-hover:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+/* 禁用初始过渡效果 - 针对 Tailwind group-hover 过渡类 */
+.card-hover [class*="group-hover:transition"] {
+    transition: none !important;
+}
+
+/* 启用过渡后恢复 */
+.card-hover.transition-enabled [class*="group-hover:transition"] {
+    transition: all 0.3s ease !important;
 }
 
 /* 渐变背景 */
@@ -244,30 +254,54 @@
     height: 100%;
     background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
     transform: scale(0);
+}
+
+/* 禁用装饰元素初始过渡 */
+.card-hover .card-decoration {
+    transition: none !important;
+}
+
+.card-hover.transition-enabled .card-decoration {
     transition: transform 0.6s ease-out;
 }
 
-.group:hover .card-decoration {
+.card-hover.transition-enabled:hover .card-decoration {
     transform: scale(1);
 }
 
 /* 按钮图标动画 */
 .btn-icon {
+}
+
+/* 禁用图标初始过渡 */
+.card-hover .btn-icon {
+    transition: none !important;
+}
+
+.card-hover.transition-enabled .btn-icon {
     transition: transform 0.3s ease-out;
 }
 
-.group:hover .btn-icon {
+.card-hover.transition-enabled:hover .btn-icon {
     transform: translateX(4px);
 }
 
 /* 标签悬停效果 */
 .tag-hover {
-    transition: all 0.2s ease-in-out;
     position: relative;
     overflow: hidden;
 }
 
-.tag-hover:hover {
+/* 禁用标签初始过渡 */
+.card-hover .tag-hover {
+    transition: none !important;
+}
+
+.card-hover.transition-enabled .tag-hover {
+    transition: all 0.2s ease-in-out;
+}
+
+.card-hover.transition-enabled .tag-hover:hover {
     transform: scale(1.05);
     box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
 }
@@ -533,23 +567,25 @@
 
 /* 按钮悬停效果增强 */
 .btn-primary {
-    transition: all 0.3s ease-in-out;
     position: relative;
     overflow: hidden;
 }
 
-.btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(59, 130, 246, 0.4);
+/* 禁用按钮初始过渡 */
+.card-hover .btn-primary {
+    transition: none !important;
+}
+
+.card-hover.transition-enabled .btn-primary:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 10px 20px rgba(34, 197, 94, 0.3);
+    transition: all 0.3s ease-in-out;
 }
 
 /* 卡片悬停时的文字效果 */
-.card-title {
-    transition: color 0.3s ease-in-out;
-}
-
 .group:hover .card-title {
     color: #3b82f6;
+    transition: color 0.3s ease-in-out;
 }
 
 /* 平滑滚动 */

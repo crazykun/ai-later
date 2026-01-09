@@ -59,26 +59,26 @@
             <!-- Sites Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-6">
                 {{ range .sites }}
-                <div class="bg-white border border-gray-200 rounded-2xl p-5 hover:shadow-xl hover:shadow-blue-100/50 transition-all duration-300 transform hover:-translate-y-2 flex flex-col min-h-72 group relative overflow-hidden card-hover scale-in" data-name="{{ .Name }}">
+                <div class="bg-white border border-gray-200 rounded-2xl p-5 hover:shadow-xl hover:shadow-blue-100/50 flex flex-col min-h-72 group relative overflow-hidden card-hover" data-name="{{ .Name }}">
                     <!-- 装饰性背景渐变 -->
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-50 to-purple-50 rounded-full -translate-y-16 translate-x-16 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-50 to-purple-50 rounded-full -translate-y-16 translate-x-16 opacity-0 group-hover:opacity-100 group-hover:transition-opacity group-hover:duration-500"></div>
+
                     <!-- 卡片装饰元素 -->
-                    <div class="card-decoration absolute top-0 right-0 w-full h-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="card-decoration absolute top-0 right-0 w-full h-full opacity-0 group-hover:opacity-100 group-hover:transition-opacity group-hover:duration-500"></div>
                     
                     <div class="flex flex-row items-start gap-4 mb-4 relative z-10">
-                        <div class="relative">
+                        <div class="relative shrink-0">
                             {{ if .Logo }}
-                            <img src="{{ .Logo }}" alt="{{ .Name }} logo" class="w-16 h-16 object-contain rounded-xl border border-gray-100 group-hover:scale-110 transition-transform duration-300 shadow-sm">
+                            <img src="{{ .Logo }}" alt="{{ .Name }} logo" class="w-16 h-16 object-contain rounded-xl border border-gray-100 shadow-sm group-hover:scale-110 group-hover:transition-transform group-hover:duration-300" loading="lazy">
                             {{ else }}
                             <div class="w-16 h-16 rounded-xl border border-gray-100 flex items-center justify-center text-white font-bold text-lg shadow-sm" style="background-color: {{ .Color }}">
                                 {{ .Initials }}
                             </div>
                             {{ end }}
-                            <div class="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                            <div class="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl opacity-0 group-hover:opacity-20 group-hover:transition-opacity group-hover:duration-300"></div>
                         </div>
-                        <div class="flex-1">
-                            <h2 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors card-title">{{ .Name }}</h2>
+                        <div class="flex-1 min-w-0">
+                            <h2 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-blue-600 group-hover:transition-colors group-hover:duration-300 card-title">{{ .Name }}</h2>
                             <p class="text-gray-600 mb-3 line-clamp-3 flex-grow text-xs leading-relaxed">{{ .Description }}</p>
                         </div>
                     </div>
@@ -94,9 +94,9 @@
                     <!-- 按钮容器 - 右对齐 -->
                     <div class="flex justify-end mt-auto relative z-10">
                         <a href="{{ .URL }}" target="_blank" rel="noopener noreferrer"
-                           class="bg-gradient-to-r from-green-500 to-emerald-500 text-white px-5 py-2.5 rounded-xl hover:from-green-600 hover:to-emerald-600 transition-all transform hover:scale-105 hover:-translate-y-1 flex items-center gap-2 font-medium shadow-lg hover:shadow-xl group/btn btn-primary">
+                           class="bg-gradient-to-r from-green-500 to-emerald-500 text-white px-5 py-2.5 rounded-xl hover:from-green-600 hover:to-emerald-600 hover:scale-105 hover:-translate-y-1 hover:shadow-xl flex items-center gap-2 font-medium shadow-lg group/btn btn-primary">
                             <span>访问站点</span>
-                            <svg class="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-200 btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <svg class="w-4 h-4 group-hover/btn:translate-x-1 btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
                             </svg>
                         </a>
