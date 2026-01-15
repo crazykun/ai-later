@@ -16,11 +16,12 @@ type Site struct {
 	Visits      int      `json:"visits,omitempty"`
 	Featured    bool     `json:"featured,omitempty"`
 	CreatedAt   string   `json:"created_at,omitempty"`
+	Deleted     bool     `json:"deleted,omitempty"`
 }
 
 // SiteDisplay 用于前端显示的站点信息，包含额外的显示字段
 type SiteDisplay struct {
 	Site
-	Color  string `json:"color"`
+	Color    string `json:"color"`
 	Initials string `json:"initials"`
 }

@@ -31,21 +31,34 @@ func init() {
 }
 
 func loadSites() {
-	data, err := os.ReadFile("./data/ai.json")
+	// 首先加载原始的 ai.json
+	aiData, err := os.ReadFile("./data/ai.json")
 	if err != nil {
-		log.Printf("读取文件失败: %v", err)
+		log.Printf("读取 ai.json 文件失败: %v", err)
 		return
 	}
 
-	var newSites []models.Site
-	if err := json.Unmarshal(data, &newSites); err != nil {
-		log.Printf("解析JSON失败: %v", err)
+	var aiSites []models.Site
+	if err := json.Unmarshal(aiData, &aiSites); err != nil {
+		log.Printf("解析 ai.json JSON 失败: %v", err)
 		return
 	}
+
+	// 然后加载 custom.json（如果存在）
+	customData, err := os.ReadFile("./data/custom.json")
+	var customSites []models.Site
+	if err == nil {
+		if err := json.Unmarshal(customData, &customSites); err != nil {
+			log.Printf("解析 custom.json JSON 失败: %v", err)
+		}
+	}
+
+	// 合并数据，custom.json 优先级更高
+	mergedSites := mergeSites(aiSites, customSites)
 
 	sitesLock.Lock()
 	defer sitesLock.Unlock()
-	sites = newSites
+	sites = mergedSites
 }
 
 func watchFileChanges() {
@@ -55,10 +68,15 @@ func watchFileChanges() {
 	}
 	defer watcher.Close()
 
+	// 监控 ai.json 和 custom.json 文件
 	err = watcher.Add("./data/ai.json")
 	if err != nil {
-		log.Printf("监控文件失败: %v", err)
-		return
+		log.Printf("监控 ai.json 文件失败: %v", err)
+	}
+
+	err = watcher.Add("./data/custom.json")
+	if err != nil {
+		log.Printf("监控 custom.json 文件失败: %v", err)
 	}
 
 	for {
@@ -139,6 +157,43 @@ func sortSites(sites []models.Site, sortBy string) {
 			return strings.ToLower(sites[i].Name) < strings.ToLower(sites[j].Name)
 		})
 	}
+}
+
+// mergeSites 合并 ai.json 和 custom.json 的数据，custom.json 优先级更高
+// 并且过滤掉已删除的站点
+func mergeSites(aiSites, customSites []models.Site) []models.Site {
+	// 创建 aiSites 的映射，用于快速查找
+	aiSiteMap := make(map[string]models.Site)
+	for _, site := range aiSites {
+		aiSiteMap[site.Name] = site
+	}
+
+	// 创建结果集
+	var result []models.Site
+
+	// 首先添加 customSites 中的站点（未删除的）
+	for _, site := range customSites {
+		if !site.Deleted {
+			result = append(result, site)
+		}
+	}
+
+	// 然后添加 aiSites 中不在 customSites 中的站点
+	for _, site := range aiSites {
+		// 检查是否已在 customSites 中存在
+		found := false
+		for _, customSite := range customSites {
+			if customSite.Name == site.Name {
+				found = true
+				break
+			}
+		}
+		if !found {
+			result = append(result, site)
+		}
+	}
+
+	return result
 }
 
 func contains(slice []string, item string) bool {
@@ -434,8 +489,8 @@ func AdminDeleteSiteHandler(c *gin.Context) {
 		return
 	}
 
-	// Remove site
-	sites = append(sites[:siteIndex], sites[siteIndex+1:]...)
+	// 标记为已删除，而不是直接删除
+	sites[siteIndex].Deleted = true
 	saveSites()
 
 	c.Redirect(http.StatusFound, "/admin/sites")
@@ -448,7 +503,7 @@ func saveSites() {
 		return
 	}
 
-	if err := os.WriteFile("./data/ai.json", data, 0644); err != nil {
-		log.Printf("写入文件失败: %v", err)
+	if err := os.WriteFile("./data/custom.json", data, 0644); err != nil {
+		log.Printf("写入 custom.json 文件失败: %v", err)
 	}
 }

@@ -7,3 +7,5 @@ CLAUDE.md
 node_modules/
 package-lock.json
 screenshot.js
+data/custom.json
+ai-later
