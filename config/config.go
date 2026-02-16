@@ -25,17 +25,16 @@ type SessionConfig struct {
 var AppConfig Config
 
 func LoadConfig() error {
-	// 优先加载 config.yaml
 	if err := loadConfigFile("config.yaml"); err == nil {
+		overrideFromEnv()
 		return nil
 	}
 
-	// 然后加载 config.demo.yaml
 	if err := loadConfigFile("config.demo.yaml"); err == nil {
+		overrideFromEnv()
 		return nil
 	}
 
-	// 如果都不存在，使用默认配置
 	AppConfig = Config{
 		Port:      "8080",
 		Copyright: "AI导航 © 2024",
@@ -47,7 +46,7 @@ func LoadConfig() error {
 			Secret: "your-secret-key-here",
 		},
 	}
-
+	overrideFromEnv()
 	return nil
 }
 
@@ -60,4 +59,26 @@ func loadConfigFile(filePath string) error {
 
 	decoder := yaml.NewDecoder(file)
 	return decoder.Decode(&AppConfig)
+}
+
+func overrideFromEnv() {
+	if port := os.Getenv("PORT"); port != "" {
+		AppConfig.Port = port
+	}
+
+	if copyright := os.Getenv("COPYRIGHT"); copyright != "" {
+		AppConfig.Copyright = copyright
+	}
+
+	if username := os.Getenv("ADMIN_USERNAME"); username != "" {
+		AppConfig.Admin.Username = username
+	}
+
+	if password := os.Getenv("ADMIN_PASSWORD"); password != "" {
+		AppConfig.Admin.Password = password
+	}
+
+	if secret := os.Getenv("SESSION_SECRET"); secret != "" {
+		AppConfig.Session.Secret = secret
+	}
 }

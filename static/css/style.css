@@ -143,9 +143,6 @@
 }
 
 /* 卡片悬停效果增强 */
-.card-hover {
-}
-
 .card-hover.transition-enabled:hover {
     transform: translateY(-8px);
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
@@ -267,10 +264,6 @@
 
 .card-hover.transition-enabled:hover .card-decoration {
     transform: scale(1);
-}
-
-/* 按钮图标动画 */
-.btn-icon {
 }
 
 /* 禁用图标初始过渡 */
