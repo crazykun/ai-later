@@ -567,22 +567,9 @@
         "featured": true
     },
     {
-        "name": "tabbit",
-        "url": "https://www.tabbit-ai.com/",
-        "description": "美团光年之外团队发布Tabbit AI浏览器",
-        "logo": "",
-        "tags": [
-            "浏览器",
-            "语言模型"
-        ],
-        "category": "AI工具",
-        "rating": 4.5,
-        "featured": true
-    },
-    {
-        "name": "心流AI助手(iflow)",
+        "name": "心流 AI 助手 (iflow)",
         "url": "https://cli.iflow.cn/",
-        "description": "阿里巴巴心流研究团队发布的终端AI智能体 iFlow CLI",
+        "description": "阿里巴巴心流研究团队发布的终端 AI智能体 iFlow CLI",
         "logo": "",
         "tags": [
             "AI编程",
@@ -590,6 +577,102 @@
         ],
         "category": "AI编程",
         "rating": 4.5,
+        "featured": true
+    },
+    {
+        "name": "Minimax",
+        "url": "https://www.minimaxi.com/",
+        "description": "MiniMax 是一家专注于人工智能大模型研发的公司，致力于开发通用人工智能基础设施",
+        "logo": "",
+        "tags": [
+            "AI 对话",
+            "语言模型",
+            "智能助手"
+        ],
+        "category": "AI 对话",
+        "rating": 4.3
+    },
+    {
+        "name": "OpenClaw",
+        "url": "https://github.com/OpenClaw",
+        "description": "开源的 AI工具平台，提供多种 AI 能力和接口",
+        "logo": "",
+        "tags": [
+            "开源",
+            "AI工具",
+            "开发平台"
+        ],
+        "category": "AI工具",
+        "rating": 4.0
+    },
+    {
+        "name": "Copaw",
+        "url": "https://copaw.com/",
+        "description": "智能 AI 助手，提供高效的自动化解决方案",
+        "logo": "",
+        "tags": [
+            "AI 助手",
+            "自动化工具",
+            "智能服务"
+        ],
+        "category": "AI工具",
+        "rating": 4.1
+    },
+    {
+        "name": "MaxClaw",
+        "url": "https://maxclaw.com/",
+        "description": "先进的 AI 技术平台，专注于企业级智能解决方案",
+        "logo": "",
+        "tags": [
+            "AI 平台",
+            "企业服务",
+            "智能解决方案"
+        ],
+        "category": "AI工具",
+        "rating": 4.2
+    },
+    {
+        "name": "Kimi Claw",
+        "url": "https://kimi.moonshot.cn/claw",
+        "description": "月之暗面推出的 AI智能体平台，支持自主执行和多 Agent协作",
+        "logo": "",
+        "tags": [
+            "AI智能体",
+            "自动化工具",
+            "Agent 平台"
+        ],
+        "category": "AI工具",
+        "rating": 4.3,
+        "featured": true
+    },
+    {
+        "name": "CoPaw",
+        "url": "https://copaw.aliyun.com/",
+        "description": "阿里云开源的桌面Agent工具，支持一键本地和云端部署",
+        "logo": "",
+        "tags": [
+            "开源",
+            "桌面Agent",
+            "AI 助手",
+            "中文优化"
+        ],
+        "category": "AI工具",
+        "rating": 4.4,
+        "featured": true
+    },
+    {
+        "name": "OpenClaw",
+        "url": "https://github.com/OpenClaw/OpenClaw",
+        "description": "2026 年最火的开源 AI智能体项目，支持本地运行、自主执行、隐私可控",
+        "logo": "",
+        "tags": [
+            "开源",
+            "AI智能体",
+            "Agent 框架",
+            "自主执行"
+        ],
+        "category": "AI工具",
+        "rating": 4.6,
         "featured": true
     }
 ]
