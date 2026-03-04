@@ -594,8 +594,8 @@
     },
     {
         "name": "OpenClaw",
-        "url": "https://github.com/OpenClaw",
-        "description": "开源的 AI工具平台，提供多种 AI 能力和接口",
+        "url": "https://github.com/OpenClaw/OpenClaw",
+        "description": "2026 年最火的开源 AI智能体项目，支持本地运行、自主执行、隐私可控",
         "logo": "",
         "tags": [
             "开源",
@@ -658,21 +658,6 @@
         ],
         "category": "AI工具",
         "rating": 4.4,
-        "featured": true
-    },
-    {
-        "name": "OpenClaw",
-        "url": "https://github.com/OpenClaw/OpenClaw",
-        "description": "2026 年最火的开源 AI智能体项目，支持本地运行、自主执行、隐私可控",
-        "logo": "",
-        "tags": [
-            "开源",
-            "AI智能体",
-            "Agent 框架",
-            "自主执行"
-        ],
-        "category": "AI工具",
-        "rating": 4.6,
         "featured": true
     }
 ]
