@@ -97,6 +97,18 @@
         "rating": 4.6
     },
     {
+        "name": "Claude Code",
+        "url": "https://code.claude.com/",
+        "description": "Anthropic开发的AI Cli编码工具",
+        "logo": "/static/img/nav-ai-claude.png",
+        "tags": [
+            "Cli",
+            "AI编程"
+        ],
+        "category": "AI编程",
+        "rating": 4.6
+    },
+    {
         "name": "小艺",
         "url": "https://xiaoyi.huawei.com/chat/",
         "description": "由华为公司开发的AI智能助手，支持多种语言和场景",
@@ -538,6 +550,45 @@
             "API"
         ],
         "category": "AI对话",
+        "rating": 4.5,
+        "featured": true
+    },
+    {
+        "name": "tabbit",
+        "url": "https://www.tabbit-ai.com/",
+        "description": "美团光年之外团队发布Tabbit AI浏览器",
+        "logo": "",
+        "tags": [
+            "浏览器",
+            "语言模型"
+        ],
+        "category": "AI工具",
+        "rating": 4.5,
+        "featured": true
+    },
+    {
+        "name": "tabbit",
+        "url": "https://www.tabbit-ai.com/",
+        "description": "美团光年之外团队发布Tabbit AI浏览器",
+        "logo": "",
+        "tags": [
+            "浏览器",
+            "语言模型"
+        ],
+        "category": "AI工具",
+        "rating": 4.5,
+        "featured": true
+    },
+    {
+        "name": "心流AI助手(iflow)",
+        "url": "https://cli.iflow.cn/",
+        "description": "阿里巴巴心流研究团队发布的终端AI智能体 iFlow CLI",
+        "logo": "",
+        "tags": [
+            "AI编程",
+            "Cli"
+        ],
+        "category": "AI编程",
         "rating": 4.5,
         "featured": true
     }
