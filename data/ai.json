@@ -659,5 +659,19 @@
         "category": "AI工具",
         "rating": 4.4,
         "featured": true
+    },
+    {
+        "name": "qclaw",
+        "url": "https://qclaw.qq.com/",
+        "description": "随时随地，微信一下，QClaw 帮你高效干活",
+        "logo": "https://cdn.qclaw.qq.com/qclaw/website/image/logo-cta.png",
+        "tags": [
+            "桌面Agent",
+            "AI 助手",
+            "中文优化"
+        ],
+        "category": "AI工具",
+        "rating": 4.4,
+        "featured": true
     }
 ]
