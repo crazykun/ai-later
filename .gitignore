@@ -2,6 +2,7 @@
 ai-navigator
 ai-later
 *.exe
+*.zip
 
 # Config (contains secrets)
 config.yaml
