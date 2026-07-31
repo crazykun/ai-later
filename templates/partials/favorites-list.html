@@ -4,9 +4,17 @@
     {{ range .favoriteSites }}
     <div class="group relative bg-white dark:bg-gray-800 rounded-xl p-4 border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 hover:shadow-md transition-all duration-200">
         <a href="{{ .URL }}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-lg shrink-0 flex items-center justify-center text-white font-bold text-sm shadow-sm"
-                 style="background-color: {{ .Color }}">
-                {{ .Initials }}
+            <div class="relative shrink-0">
+                {{ if .Logo }}
+                <img src="{{ .Logo }}" alt="{{ .Name }}" class="w-10 h-10 object-contain rounded-lg border border-gray-100 dark:border-gray-700 shadow-sm" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="w-10 h-10 rounded-lg border border-gray-100 dark:border-gray-700 items-center justify-center text-white font-bold text-sm shadow-sm hidden" style="background-color: {{ .Color }}">
+                    {{ .Initials }}
+                </div>
+                {{ else }}
+                <div class="w-10 h-10 rounded-lg border border-gray-100 dark:border-gray-700 flex items-center justify-center text-white font-bold text-sm shadow-sm" style="background-color: {{ .Color }}">
+                    {{ .Initials }}
+                </div>
+                {{ end }}
             </div>
             <div class="flex-1 min-w-0">
                 <div class="font-medium text-sm text-gray-900 dark:text-white truncate group-hover:text-blue-500 transition-colors">

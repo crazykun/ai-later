@@ -417,3 +417,88 @@ func TestAdminSitesTemplateRendersDisplayTagClasses(t *testing.T) {
 		t.Fatalf("admin-sites still rendered old admin badge markup: %s", html)
 	}
 }
+
+func TestFavoritesListTemplateRendersLogoWhenAvailable(t *testing.T) {
+	tmpl := web.BuildSharedTemplates(os.DirFS("../templates"))
+
+	type FavoriteSiteView struct {
+		ID          int64
+		Name        string
+		Description string
+		URL         string
+		Logo        string
+		Color       string
+		Initials    string
+	}
+
+	var out bytes.Buffer
+	err := tmpl.ExecuteTemplate(&out, "partials/favorites-list.html", map[string]any{
+		"favoriteSites": []FavoriteSiteView{{
+			ID:          1,
+			Name:        "Test Site",
+			Description: "desc",
+			URL:         "https://example.com",
+			Logo:        "https://example.com/logo.png",
+			Color:       "#123456",
+			Initials:    "TS",
+		}},
+	})
+	if err != nil {
+		t.Fatalf("ExecuteTemplate failed: %v", err)
+	}
+
+	html := out.String()
+	for _, needle := range []string{
+		"https://example.com/logo.png",
+		"onerror=\"this.style.display='none'; this.nextElementSibling.style.display='flex';\"",
+		"hidden",
+		"border border-gray-100 dark:border-gray-700",
+	} {
+		if !strings.Contains(html, needle) {
+			t.Fatalf("favorites-list missing %q: %s", needle, html)
+		}
+	}
+}
+
+func TestFavoritesListTemplateFallsBackToInitialsWhenLogoMissing(t *testing.T) {
+	tmpl := web.BuildSharedTemplates(os.DirFS("../templates"))
+
+	type FavoriteSiteView struct {
+		ID          int64
+		Name        string
+		Description string
+		URL         string
+		Logo        string
+		Color       string
+		Initials    string
+	}
+
+	var out bytes.Buffer
+	err := tmpl.ExecuteTemplate(&out, "partials/favorites-list.html", map[string]any{
+		"favoriteSites": []FavoriteSiteView{{
+			ID:          1,
+			Name:        "Test Site",
+			Description: "desc",
+			URL:         "https://example.com",
+			Color:       "#123456",
+			Initials:    "TS",
+		}},
+	})
+	if err != nil {
+		t.Fatalf("ExecuteTemplate failed: %v", err)
+	}
+
+	html := out.String()
+	if strings.Contains(html, "<img") {
+		t.Fatalf("favorites-list rendered image when logo missing: %s", html)
+	}
+	compactHTML := strings.NewReplacer("\n", "", "\t", "", " ", "").Replace(html)
+	for _, needle := range []string{
+		">TS</div>",
+		"borderborder-gray-100dark:border-gray-700",
+	} {
+		if !strings.Contains(compactHTML, needle) {
+			t.Fatalf("favorites-list missing fallback %q: %s", needle, html)
+		}
+	}
+}
